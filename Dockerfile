@@ -18,29 +18,29 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     git \
     nodejs \
     npm \
-    php8.1 \
-    php8.1-common \
-    php8.1-curl \
-    php8.1-ds \
-    php8.1-gd \
-    php8.1-intl \
-    php8.1-mbstring \
-    php8.1-mysql \
-    php8.1-opcache \
-    php8.1-pgsql \
-    php8.1-redis \
-    php8.1-sqlite3 \
-    php8.1-tokenizer \
-    php8.1-xml \
-    php8.1-zip \
+    php8.2 \
+    php8.2-common \
+    php8.2-curl \
+    php8.2-ds \
+    php8.2-gd \
+    php8.2-intl \
+    php8.2-mbstring \
+    php8.2-mysql \
+    php8.2-opcache \
+    php8.2-pgsql \
+    php8.2-redis \
+    php8.2-sqlite3 \
+    php8.2-tokenizer \
+    php8.2-xml \
+    php8.2-zip \
     php-pear \
-    php8.1-redis \
-    php8.1-dev \ 
+    php8.2-redis \
+    php8.2-dev \ 
     zip 
 
-RUN pecl install swoole-5.1.2 && echo "extension=swoole.so" > /etc/php/8.1/cli/conf.d/20-swoole.ini 
+RUN pecl install swoole-5.1.2 && echo "extension=swoole.so" > /etc/php/8.2/cli/conf.d/20-swoole.ini 
 RUN npm install -g yarn
-# FROM lutfika/nevertary:php8.1-node16
+# FROM lutfika/nevertary:php8.2-node16
 RUN ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime && \
 dpkg-reconfigure -f noninteractive tzdata
 RUN echo "openssl_conf = openssl_init\n\n[openssl_init]\nssl_conf = ssl_sect\n\n[ssl_sect]\nsystem_default = system_default_sect\n\n[system_default_sect]\nOptions = UnsafeLegacyServerConnect" | tee -a /etc/ssl/openssl.cnf
